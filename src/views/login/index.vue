@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, toRaw } from 'vue'
 import { UserFilled, CircleCheckFilled, View, Hide } from '@element-plus/icons-vue'
 import { login } from '@/api/all'
 
@@ -62,8 +62,7 @@ const viewPass = () => {
 const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      console.log(formData.value)
-      await login(formData.value)
+      await login(toRaw(formData))
     } else {
       console.log('error')
     }
