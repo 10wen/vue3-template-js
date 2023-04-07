@@ -30,7 +30,12 @@
 import { reactive, ref, toRaw } from 'vue'
 import { UserFilled, CircleCheckFilled, View, Hide } from '@element-plus/icons-vue'
 import { login } from '@/api/all'
+import { useUserStore } from '../../stores/userStore'
+import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 
+const userStore = useUserStore()
+const router = useRouter()
 const formData = reactive({
   username: '',
   password: ''
@@ -62,9 +67,17 @@ const viewPass = () => {
 const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      await login(toRaw(formData))
+      const result = await login(toRaw(formData))
+      if (result.code === 0) {
+        userStore.setToken(result.data.token)
+        userStore.userInfo = result.data.userInfo
+        router.push('/')
+      }
     } else {
-      console.log('error')
+      ElMessage({
+        message: 'validate error.',
+        type: 'warning'
+      })
     }
   })
 }

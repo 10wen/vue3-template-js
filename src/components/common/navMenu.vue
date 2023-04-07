@@ -5,38 +5,35 @@
       default-active="home"
       class="el-menu-vertical"
       :collapse="commStore.navCollapse"
-      @open="handleOpen"
-      @close="handleClose"
     >
       <el-menu-item index="home">
-        <el-icon><icon-menu /></el-icon>
-        <template #title>Navigator One</template>
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Home Control</template>
       </el-menu-item>
       <el-menu-item index="user">
-        <el-icon><icon-menu /></el-icon>
-        <template #title>Navigator Two</template>
+        <el-icon><UserFilled /></el-icon>
+        <template #title>User Control</template>
       </el-menu-item>
       <el-menu-item index="home" disabled>
         <el-icon><document /></el-icon>
         <template #title>Navigator Three</template>
       </el-menu-item>
-      <el-menu-item index="user">
-        <el-icon><setting /></el-icon>
-        <template #title>Navigator Four</template>
-      </el-menu-item>
-      <el-sub-menu index="home">
+      <el-sub-menu index="user">
         <template #title>
-          <el-icon><HomeFilled /></el-icon>
-          <span>Home</span>
+          <el-icon><UserFilled /></el-icon>
+          <span>User Control</span>
         </template>
-        <el-menu-item-group>
+        <!-- <el-menu-item-group>
           <template #title><span>Group One</span></template>
           <el-menu-item index="5-1">item one</el-menu-item>
           <el-menu-item index="5-2">item two</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="Group Two">
           <el-menu-item index="5-3">item three</el-menu-item>
-        </el-menu-item-group>
+        </el-menu-item-group> -->
+        <el-menu-item index="userList">User List</el-menu-item>
+        <el-menu-item index="userRole" disabled>User Role</el-menu-item>
+        <el-menu-item index="adminUser">Admin User</el-menu-item>
         <el-sub-menu index="5-4">
           <template #title><span>item four</span></template>
           <el-menu-item index="5-4-1">item one</el-menu-item>
@@ -47,7 +44,7 @@
 </template>
 
 <script setup>
-import { HomeFilled, Menu as IconMenu, Document, Setting } from '@element-plus/icons-vue'
+import { HomeFilled, UserFilled, Document, Setting } from '@element-plus/icons-vue'
 import { useCommonStore } from '../../stores/comm'
 
 const commStore = useCommonStore()

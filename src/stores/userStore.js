@@ -1,12 +1,9 @@
 import { defineStore } from 'pinia'
+import { login } from '../api/all'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    // userinfo: {
-    //   username: '',
-    //   password: '',
-    //   role: 'admin'
-    // },
+    token: localStorage.getItem('token') || '',
     userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
     warning: {
       warningMsg: '',
@@ -14,22 +11,23 @@ export const useUserStore = defineStore('user', {
       button: []
     }
   }),
-  getters: {
-    upperUserName(state) {
-      return state.username.toUpperCase()
-    },
-    getUserByRole(state) {
-      return (role) => {
-        return state.role === role
-      }
-    }
-  },
+  getters: {},
   actions: {
-    setUserInfo(username) {
-      this.username = username
+    setToken(token) {
+      this.token = token
+      localStorage.setItem('token', token)
     },
-    setRole(role) {
-      this.role = role
+    login(data) {
+      return new Promise(async (resole, reject) => {
+        let result = await login(data)
+        if (result.code === 0) {
+          this.token = result.data.token
+          this.userInfo = result.data.userInfo
+          resole(result.data.message)
+        } else {
+          reject(result.data.message)
+        }
+      })
     }
   }
 })

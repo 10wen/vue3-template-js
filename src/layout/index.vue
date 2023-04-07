@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside :width="commStore.navCollapse ? '64px' : '200px'">
+      <el-aside :width="commStore.navCollapse ? '64px' : '200px'" class="aside">
         <navMenu />
       </el-aside>
       <el-container>
@@ -27,6 +27,9 @@ const commStore = useCommonStore()
 
 <style lang="scss" scoped>
 .common-layout {
+  .aside {
+    transition: width 0.3s linear;
+  }
   .content {
     width: 100%;
     padding: 10px 20px;

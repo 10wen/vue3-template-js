@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useUserStore } from '../stores/userStore'
 
 const getView = (name) => {
   return () => import(`@/views/${name}/index.vue`)
@@ -62,6 +63,16 @@ const router = createRouter({
   ]
 })
 
-// router.beforeEach(() => {})
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore()
+  const whiteRoutes = ['/login']
+  if (userStore.token) {
+    if (to.path === '/login') {
+      next('/')
+    } else next()
+  } else if (!whiteRoutes.includes(to.path)) {
+    next('/login')
+  } else next()
+})
 
 export default router
