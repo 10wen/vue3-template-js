@@ -46,7 +46,7 @@ const logout = () => {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 1px 5px 1px rgba($color: #000000, $alpha: 0.1);
+  // box-shadow: 0px 1px 5px 1px rgba($color: #000000, $alpha: 0.1);
 
   .user-info {
     display: flex;

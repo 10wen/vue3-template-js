@@ -1,5 +1,5 @@
 <template>
-  <div>User Control</div>
+  <div>home page management</div>
 </template>
 
 <script setup></script>

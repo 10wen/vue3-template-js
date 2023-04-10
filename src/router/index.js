@@ -10,7 +10,7 @@ const router = createRouter({
   routes: [
     {
       path: '/login',
-      name: 'Login',
+      name: 'login',
       component: getView('login'),
       meta: {
         title: 'project | Login'
@@ -24,7 +24,7 @@ const router = createRouter({
       children: [
         {
           path: 'home',
-          name: 'Home',
+          name: 'home',
           component: getView('home'),
           meta: {
             title: 'project | Home',
@@ -32,47 +32,48 @@ const router = createRouter({
           }
         },
         {
-          path: 'user',
-          name: 'User',
-          component: getView('user'),
+          path: 'dynamic',
+          name: 'dynamic',
+          component: getView('dynamic'),
           meta: {
-            title: 'project | user',
+            title: 'project | Dynamic',
+            breadcrumbs: [{ to: '/dynamic', text: 'Dynamic' }]
+          }
+        },
+        {
+          path: 'userlist',
+          name: 'userList',
+          component: () => import('@/views/user/userList.vue'),
+          meta: {
+            title: 'project | User List',
             breadcrumbs: [{ to: '/user', text: 'User' }]
-          }
+          },
         },
         {
-          path: 'home',
-          name: 'home',
-          component: getView('home'),
+          path: 'rolelist',
+          name: 'roleList',
+          component: () => import('@/views/user/roleList.vue'),
           meta: {
-            title: 'project | Home',
-            breadcrumbs: [{ to: '/home', text: 'Home' }]
-          }
+            title: 'project | Role List',
+            breadcrumbs: [{ to: '/user', text: 'User' }]
+          },
         },
-        {
-          path: 'home',
-          name: 'home',
-          component: getView('home'),
-          meta: {
-            title: 'project | Home',
-            breadcrumbs: [{ to: '/home', text: 'Home' }]
-          }
-        }
       ]
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  const userStore = useUserStore()
-  const whiteRoutes = ['/login']
-  if (userStore.token) {
-    if (to.path === '/login') {
-      next('/')
-    } else next()
-  } else if (!whiteRoutes.includes(to.path)) {
-    next('/login')
-  } else next()
+  // const userStore = useUserStore()
+  // const whiteRoutes = ['/login']
+  // if (userStore.token) {
+  //   if (to.path === '/login') {
+  //     next('/')
+  //   } else next()
+  // } else if (!whiteRoutes.includes(to.path)) {
+  //   next('/login')
+  // } else next()
+  next()
 })
 
 export default router

@@ -1,2 +1,43 @@
 @import './base.css';
 
+
+
+.mr-10-20 {
+  margin: 10px 20px;
+}
+.mr-20-0 {
+  margin: 20px 0px;
+}
+.mrtop-10 {
+  margin-top: 10px;
+}
+
+.pd-0-20 {
+  padding: 0 20px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.tab-content-header{
+  display: flex;
+  justify-content: space-between;
+}
