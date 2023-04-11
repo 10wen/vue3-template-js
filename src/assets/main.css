@@ -1,6 +1,16 @@
 @import './base.css';
 
 
+.pointer {
+  cursor: pointer;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
 
 .mr-10-20 {
   margin: 10px 20px;
@@ -11,9 +21,16 @@
 .mrtop-10 {
   margin-top: 10px;
 }
+.mrbot-10 {
+  margin-bottom: 10px;
+}
 
 .pd-0-20 {
   padding: 0 20px;
+}
+
+.float-right {
+  float: right;
 }
 
 .flex-row {
@@ -23,6 +40,11 @@
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.flex-row-reverse {
+  display: flex; 
+  flex-direction: row-reverse;
 }
 
 .row-center {
@@ -40,4 +62,16 @@
 .tab-content-header{
   display: flex;
   justify-content: space-between;
+}
+
+
+.form-group {
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #FAFCFF;
 }

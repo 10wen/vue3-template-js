@@ -28,7 +28,7 @@
 
 <script setup>
 import { reactive, ref, toRaw } from 'vue'
-import { UserFilled, CircleCheckFilled, View, Hide } from '@element-plus/icons-vue'
+import { UserFilled, CircleCheckFilled } from '@element-plus/icons-vue'
 import { login } from '@/api/all'
 import { useUserStore } from '../../stores/userStore'
 import { useRouter } from 'vue-router'

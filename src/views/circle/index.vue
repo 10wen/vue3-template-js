@@ -32,10 +32,10 @@
     <stretchWrapper>
       <el-tabs v-model="activeName" class="home-tabs" @tab-click="changeActive">
         <el-tab-pane label="Category" name="first">
-          <category />
+          <Category />
         </el-tab-pane>
-        <el-tab-pane label="Dynamic List" name="second">
-          <dynamicList />
+        <el-tab-pane label="Circle List" name="second">
+          <CircleList />
         </el-tab-pane>
       </el-tabs>
     </stretchWrapper>
@@ -43,8 +43,8 @@
 </template>
 
 <script setup>
-import category from './category.vue'
-import dynamicList from './dynamicList.vue'
+import Category from './category.vue'
+import CircleList from './circleList.vue';
 
 import { ref, reactive } from 'vue'
 const activeName = ref('first')
@@ -65,7 +65,11 @@ const onSubmit = () => {
 <style lang="scss" scoped>
 
 .container {
-  
+  .form-group {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
 
 </style>

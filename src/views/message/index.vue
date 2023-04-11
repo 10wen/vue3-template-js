@@ -1,8 +1,6 @@
 <template>
   <div>
-    <autoWrapper>
-      
-    </autoWrapper>
+    message
   </div>
 </template>
 

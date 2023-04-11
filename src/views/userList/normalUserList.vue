@@ -1,15 +1,33 @@
 <template>
   <div class="container pd-0-20">
     <div class="tab-content-header">
-      <span>Category</span>
-      <el-button type="primary" @click="onSubmit">Add Data</el-button>
+      <span>Normal User List</span>
+      <div> 
+        <el-button type="warning" plain @click="onSubmit">Del Data</el-button>
+        <el-button type="primary" plain @click="onSubmit">Add Data</el-button>
+      </div>
     </div>
     
     <div class="data-table mr-20-0">
-      <el-table :data="tableData" border stripe style="width: 100%" header-row-class-name="table-header">
+      <el-table 
+        ref="tableRef"
+        :data="tableData" 
+        border 
+        style="width: 100%"
+        :header-cell-style="{background:'#FAFCFF'}"
+        cell-class-name="pointer"
+      >
         <el-table-column prop="date" label="Date" />
         <el-table-column prop="name" label="Name" />
         <el-table-column prop="address" label="Address" />
+        <el-table-column fixed="right" label="Operations" width="120">
+          <template #default>
+            <el-button link type="primary" size="small" @click="handleClick"
+              >Detail</el-button
+            >
+            <el-button link type="primary" size="small">Edit</el-button>
+          </template>
+        </el-table-column>
       </el-table>
       <SmallPagination 
         :total="totalRow"

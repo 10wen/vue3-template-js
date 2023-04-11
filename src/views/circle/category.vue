@@ -1,7 +1,7 @@
 <template>
   <div class="container pd-0-20">
     <div class="tab-content-header">
-      <span>Category</span>
+      Category
       <el-button type="primary" @click="onSubmit">Add Data</el-button>
     </div>
     
@@ -20,11 +20,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const totalRow = ref(100)
+
 const handlePageChange = (currentPage) => {
-  console.log('page change ', currentPage);
+  console.log('change current page',currentPage);
 }
 
 const tableData = [
@@ -52,8 +53,5 @@ const tableData = [
 </script>
 
 <style lang="scss" scoped>
-// .container {
-//   padding: 0 20px;
 
-// }
 </style>

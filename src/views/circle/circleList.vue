@@ -1,7 +1,7 @@
 <template>
   <div class="container pd-0-20">
     <div class="tab-content-header">
-      <span>Dynamic List</span>
+      <span>Circle List</span>
       <div>
         <el-button type="warning" @click="onSubmit">Del Data</el-button>
         <el-button type="primary" @click="onSubmit">Add Data</el-button>

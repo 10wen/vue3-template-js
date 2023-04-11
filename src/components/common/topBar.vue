@@ -1,12 +1,13 @@
 <template>
   <div class="top-bar-wrapper">
-    <div class="collapse-box" @click="commStore.changeNavCollapse">
+    <div class="collapse-box row-center" @click="commStore.changeNavCollapse">
       <el-icon size="25" v-show="commStore.navCollapse"><Expand /></el-icon>
       <el-icon size="25" v-show="!commStore.navCollapse"><Fold /></el-icon>
+      <span class="logo">Neuser</span>
     </div>
     <div class="user-info">
       <screenFull />
-      <el-popover placement="bottom" :width="200" trigger="click">
+      <el-popover placement="bottom" :width="200" trigger="click" hide-after="0">
         <template #reference>
           <div style="display: flex; align-items: center">
             <el-icon size="20"><UserFilled /></el-icon>
@@ -15,7 +16,7 @@
           </div>
         </template>
         <template #default>
-          <el-button style="width: 100%" text @click="logout">Logout</el-button>
+          <el-button style="width: 100%" link type="primary" @click="logout">Logout</el-button>
         </template>
       </el-popover>
     </div>
@@ -48,7 +49,15 @@ const logout = () => {
   align-items: center;
   // box-shadow: 0px 1px 5px 1px rgba($color: #000000, $alpha: 0.1);
 
+  .collapse-box .logo {
+    font-size: 20px;
+    line-height: 100%;
+    font-weight: bold; 
+    margin: 1px 10px;
+  }
+
   .user-info {
+    cursor: pointer;
     display: flex;
     align-items: center;
   }

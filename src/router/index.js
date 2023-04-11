@@ -32,6 +32,33 @@ const router = createRouter({
           }
         },
         {
+          path: 'activity',
+          name: 'activity',
+          component: getView('activity'),
+          meta: {
+            title: 'project | Activity',
+            breadcrumbs: [{ to: '/activity', text: 'Activity' }]
+          }
+        },
+        {
+          path: 'circle',
+          name: 'circle',
+          component: getView('circle'),
+          meta: {
+            title: 'project | Circle',
+            breadcrumbs: [{ to: '/circle', text: 'Circle' }]
+          }
+        },
+        {
+          path: 'circleDetail',
+          name: 'circleDetail',
+          component: () => import('@/views/circle/circleDetail.vue'),
+          meta: {
+            title: 'project | Circle Detail',
+            breadcrumbs: [{ to: '/circleDetail', text: 'CircleDetail' }]
+          }
+        },
+        {
           path: 'dynamic',
           name: 'dynamic',
           component: getView('dynamic'),
@@ -41,22 +68,76 @@ const router = createRouter({
           }
         },
         {
+          path: 'dynamicDetail',
+          name: 'dynamicDetail',
+          component: () => import('@/views/dynamic/dynamicDetail.vue'),
+          meta: {
+            title: 'project | Dynamic Detail',
+            breadcrumbs: [{ to: '/dynamicDetail', text: 'DynamicDetail' }]
+          }
+        },
+        {
+          path: 'resource',
+          name: 'resource',
+          component: getView('resource'),
+          meta: {
+            title: 'project | Resource',
+            breadcrumbs: [{ to: '/resource', text: 'Resource' }]
+          }
+        },
+        {
+          path: 'message',
+          name: 'message',
+          component: getView('message'),
+          meta: {
+            title: 'project | Message',
+            breadcrumbs: [{ to: '/message', text: 'Message' }]
+          }
+        },
+        {
+          path: 'comment',
+          name: 'comment',
+          component: getView('comment'),
+          meta: {
+            title: 'project | Comment',
+            breadcrumbs: [{ to: '/comment', text: 'Comment' }]
+          }
+        },
+        {
+          path: 'complaints',
+          name: 'complaints',
+          component: getView('complaints'),
+          meta: {
+            title: 'project | Complaints',
+            breadcrumbs: [{ to: '/complaints', text: 'Complaints' }]
+          }
+        },
+        {
           path: 'userlist',
           name: 'userList',
-          component: () => import('@/views/user/userList.vue'),
+          component: getView('userList'),
           meta: {
             title: 'project | User List',
-            breadcrumbs: [{ to: '/user', text: 'User' }]
+            breadcrumbs: [{ to: '/userlist', text: 'User List' }]
           },
         },
         {
-          path: 'rolelist',
-          name: 'roleList',
-          component: () => import('@/views/user/roleList.vue'),
+          path: 'systemadmin',
+          name: 'systemAdmin',
+          component: getView('systemAdmin'),
           meta: {
-            title: 'project | Role List',
-            breadcrumbs: [{ to: '/user', text: 'User' }]
+            title: 'project | System Admin',
+            breadcrumbs: [{ to: '/systemAdmin', text: 'System Admin' }]
           },
+        },
+        {
+          path: 'account',
+          name: 'account',
+          component: getView('account'),
+          meta: {
+            title: 'project | Account',
+            breadcrumbs: [{ to: '/account', text: 'Account' }]
+          }
         },
       ]
     }
@@ -74,6 +155,9 @@ router.beforeEach((to, from, next) => {
   //   next('/login')
   // } else next()
   next()
+})
+router.afterEach((to, from, failure) => {
+  document.title = to.meta.title
 })
 
 export default router

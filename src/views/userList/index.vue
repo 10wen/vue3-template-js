@@ -31,11 +31,11 @@
     </autoWrapper>
     <stretchWrapper>
       <el-tabs v-model="activeName" class="home-tabs" @tab-click="changeActive">
-        <el-tab-pane label="Category" name="first">
-          <category />
+        <el-tab-pane label="Normal User" name="first">
+          <NormalUserList />
         </el-tab-pane>
-        <el-tab-pane label="Dynamic List" name="second">
-          <dynamicList />
+        <el-tab-pane label="Authorization User" name="second">
+          <AuthUserList />
         </el-tab-pane>
       </el-tabs>
     </stretchWrapper>
@@ -43,10 +43,9 @@
 </template>
 
 <script setup>
-import category from './category.vue'
-import dynamicList from './dynamicList.vue'
-
 import { ref, reactive } from 'vue'
+import NormalUserList from './normalUserList.vue';
+import AuthUserList from './authUserList.vue';
 const activeName = ref('first')
 const changeActive = (tab) => {
   activeName.value = tab.paneName
@@ -63,9 +62,5 @@ const onSubmit = () => {
 </script>
 
 <style lang="scss" scoped>
-
-.container {
-  
-}
 
 </style>

@@ -11,7 +11,7 @@
 <style lang="scss" scoped>
 .content-wrapper {
   width: 100%;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 300px);
   margin-top: 10px;
   background-color: #fff;
   .content {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <stretchWrapper></stretchWrapper>
+    compplaints
   </div>
 </template>
 

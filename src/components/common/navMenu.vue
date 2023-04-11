@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-menu-wrapper">
+  <div class="container">
     <el-menu
       :default-active="route.name"
       class="el-menu-vertical"
@@ -8,45 +8,55 @@
     >
       <el-menu-item index="home">
         <el-icon><HomeFilled /></el-icon>
-        <template #title>Home</template>
+        <template #title>Home Page</template>
+      </el-menu-item>
+      <el-menu-item index="activity">
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Activity Management</template>
+      </el-menu-item>
+      <el-menu-item index="circle">
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Circle Management</template>
       </el-menu-item>
       <el-menu-item index="dynamic">
         <el-icon><HomeFilled /></el-icon>
-        <template #title>Dynamic</template>
+        <template #title>Dynamic Management</template>
       </el-menu-item>
-      <el-menu-item index="home" disabled>
-        <el-icon><document /></el-icon>
-        <template #title>Navigator Three</template>
+      <el-menu-item index="resource">
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Resource Management</template>
       </el-menu-item>
-      <el-sub-menu index="user">
-        <template #title>
-          <el-icon><UserFilled /></el-icon>
-          <span>User Control</span>
-        </template>
-        <el-menu-item index="userList">User List</el-menu-item>
-        <el-menu-item index="roleList" :disabled="userStore.role === 'normal'"
-          >Role List</el-menu-item
-        >
-      </el-sub-menu>
-      <!-- <el-sub-menu index="user">
-        <template #title>
-          <el-icon><UserFilled /></el-icon>
-          <span>User Control</span>
-        </template>
-        <el-menu-item index="userList">User List</el-menu-item>
-        <el-menu-item index="userRole" disabled>User Role</el-menu-item>
-        <el-menu-item index="adminUser">Admin User</el-menu-item>
-        <el-sub-menu index="5-4">
-          <template #title><span>item four</span></template>
-          <el-menu-item index="5-4-1">item one</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu> -->
+      <el-menu-item index="message">
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Message Management</template>
+      </el-menu-item>
+      <el-menu-item index="comment">
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Comment Management</template>
+      </el-menu-item>
+      <el-menu-item index="complaints">
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Complaints Management</template>
+      </el-menu-item>
+      <el-menu-item index="userList">
+        <el-icon><UserFilled /></el-icon>
+        <template #title>User Management</template>
+      </el-menu-item>
+      <el-menu-item index="systemadmin" disabled>
+        <el-icon><WarnTriangleFilled /></el-icon>
+        <template #title>System Admin</template>
+      </el-menu-item>
+      <el-menu-item index="account">
+        <el-icon><HomeFilled /></el-icon>
+        <!-- <template #title>Account</template> -->
+        <span>Account</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script setup>
-import { HomeFilled, UserFilled, Document, Setting } from '@element-plus/icons-vue'
+import { HomeFilled, UserFilled, WarnTriangleFilled } from '@element-plus/icons-vue'
 import { useCommonStore } from '../../stores/comm'
 import { useUserStore } from '../../stores/userStore'
 import { useRoute, useRouter } from 'vue-router'
@@ -61,12 +71,16 @@ const handleRoute = (index) => {
 </script>
 
 <style lang="scss" scoped>
-.nav-menu-wrapper {
+.container {
   height: 100vh;
   .el-menu-vertical {
     min-height: 100vh;
     &:not(.el-menu--collapse) {
       width: 250px;
+    }
+
+    .el-menu-item {
+      font-weight: bold;
     }
   }
 }

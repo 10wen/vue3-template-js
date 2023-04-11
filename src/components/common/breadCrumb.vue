@@ -2,7 +2,7 @@
   <div class="breadcrumb-wrapper">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item v-for="(item, index) in breadcrumbs" :key="index" :to="item.name">
-        <a href="/" style="cursor: pointer; font-weight: bold;">{{ item.text }}</a>
+        <a :href="item.to" style="cursor: pointer; font-weight: bold;">{{ item.text }}</a>
       </el-breadcrumb-item>
     </el-breadcrumb>
   </div>

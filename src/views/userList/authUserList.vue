@@ -1,18 +1,20 @@
 <template>
   <div class="container pd-0-20">
     <div class="tab-content-header">
-      <span>Dynamic List</span>
+      <span>Authorization User List</span>
       <div>
-        <el-button type="warning" @click="onSubmit">Del Data</el-button>
-        <el-button type="primary" @click="onSubmit">Add Data</el-button>
+        <el-button type="warning" plain @click="onSubmit">Del Data</el-button>
+        <el-button type="primary" plain @click="onSubmit">Add Data</el-button>
       </div>
     </div>
     <div class="data-table mr-20-0">
       <el-table
         ref="multipleTableRef"
-        :data="tableData"
+        :data="tableData" 
+        border 
         style="width: 100%"
-        border
+        :header-cell-style="{background:'#FAFCFF'}"
+        cell-class-name="pointer"
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="expand">

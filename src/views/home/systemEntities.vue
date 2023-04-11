@@ -11,22 +11,11 @@
         <el-table-column prop="name" label="Name" />
         <el-table-column prop="address" label="Address" />
       </el-table>
-      <SmallPagination 
-        :total="totalRow"
-        @handlePageChange="handlePageChange" 
-      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const totalRow = ref(100)
-const handlePageChange = (currentPage) => {
-  console.log('page change ', currentPage);
-}
-
 const tableData = [
   {
     date: '2016-05-03',
@@ -52,8 +41,5 @@ const tableData = [
 </script>
 
 <style lang="scss" scoped>
-// .container {
-//   padding: 0 20px;
 
-// }
 </style>

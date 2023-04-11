@@ -3,10 +3,13 @@
     <stretchWrapper>
       <el-tabs v-model="activeName" class="home-tabs" @tab-click="changeActive">
         <el-tab-pane label="Welcome" name="first">
-          <welcome />
+          <Welcome />
         </el-tab-pane>
         <el-tab-pane label="Home Page Management" name="second">
-          <management />
+          <HomeManagement />
+        </el-tab-pane>
+        <el-tab-pane label="System entities" name="third" :disabled="false">
+          <SystemEntities />
         </el-tab-pane>
       </el-tabs>
     </stretchWrapper>
@@ -14,9 +17,10 @@
 </template>
 
 <script setup>
-import welcome from './welcome.vue'
-import management from './management.vue'
+import Welcome from './welcome.vue'
+import HomeManagement from './homeManagement.vue'
 import { ref } from 'vue'
+import SystemEntities from './systemEntities.vue';
 const activeName = ref('first')
 const changeActive = (tab) => {
   activeName.value = tab.paneName
