@@ -2,7 +2,7 @@
   <div class="container pd-0-20">
     <div class="tab-content-header">
       <span>Category</span>
-      <el-button type="primary" @click="onSubmit">Add Data</el-button>
+      <el-button type="primary" @click="onSubmit" disabled>Add Data</el-button>
     </div>
     
     <div class="data-table mr-20-0">

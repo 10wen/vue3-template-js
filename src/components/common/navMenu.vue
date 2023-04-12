@@ -7,56 +7,59 @@
       @select="handleRoute"
     >
       <el-menu-item index="home">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Home Page</template>
       </el-menu-item>
       <el-menu-item index="activity">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Activity Management</template>
       </el-menu-item>
       <el-menu-item index="circle">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Circle Management</template>
       </el-menu-item>
       <el-menu-item index="dynamic">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Dynamic Management</template>
       </el-menu-item>
       <el-menu-item index="resource">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Resource Management</template>
       </el-menu-item>
       <el-menu-item index="message">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Message Management</template>
       </el-menu-item>
       <el-menu-item index="comment">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Comment Management</template>
       </el-menu-item>
       <el-menu-item index="complaints">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Complaints Management</template>
       </el-menu-item>
       <el-menu-item index="userList">
-        <el-icon><UserFilled /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>User Management</template>
       </el-menu-item>
-      <el-menu-item index="systemadmin" disabled>
-        <el-icon><WarnTriangleFilled /></el-icon>
+      <el-menu-item index="systemadmin">
+        <el-icon><WarningFilled /></el-icon>
         <template #title>System Admin</template>
       </el-menu-item>
       <el-menu-item index="account">
-        <el-icon><HomeFilled /></el-icon>
-        <!-- <template #title>Account</template> -->
-        <span>Account</span>
+        <el-icon><UserFilled /></el-icon>
+        <template #title>Account</template>
       </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script setup>
-import { HomeFilled, UserFilled, WarnTriangleFilled } from '@element-plus/icons-vue'
+import {
+  Menu,
+  WarningFilled,
+  UserFilled,
+} from '@element-plus/icons-vue'
 import { useCommonStore } from '../../stores/comm'
 import { useUserStore } from '../../stores/userStore'
 import { useRoute, useRouter } from 'vue-router'
