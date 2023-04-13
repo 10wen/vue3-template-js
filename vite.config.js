@@ -23,7 +23,7 @@ export default defineConfig({
     }
   },
   server: {
-    open: false, //自动打开
+    open: true, //自动打开
     proxy: {
       // 本地开发环境通过代理实现跨域，生产环境使用 nginx 转发
       '^/api': {

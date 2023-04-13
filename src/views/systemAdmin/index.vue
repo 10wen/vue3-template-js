@@ -3,7 +3,6 @@
     <autoWrapper>
       <div class="data-table mr-20-0" v-if="!isEdit">
         <div class="float-right mrbot-10 ">
-          <el-button type="warning" class="ml-10" plain @click="changeToEdit">Del admin</el-button>
           <el-button type="primary" plain @click="changeToAdd">Add admin</el-button>
         </div>
         <el-table
@@ -21,6 +20,19 @@
           <el-table-column prop="name" label="Name" />
           <el-table-column prop="name" label="Name" />
           <el-table-column prop="address" label="Address" />
+          <el-table-column label="Operations">
+            <template #default="scope">
+              <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+                >Edit</el-button
+              >
+              <el-button
+                size="small"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)"
+                >Delete</el-button
+              >
+            </template>
+          </el-table-column>
         </el-table>
       </div>
       <div class="data-edit mr-20-0" v-else>
@@ -45,7 +57,7 @@ const setCurrent = (row) => {
 const handleCurrentChange = (val) => {
   currentRow.value = val
 }
-const changeToEdit = () => {
+const handleEdit = () => {
   isEdit.value = true
   handleDelete()
 }

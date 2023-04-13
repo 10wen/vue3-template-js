@@ -35,10 +35,10 @@
 
 <script setup>
 import { reactive, ref, toRaw } from 'vue'
-import { updateUserInfo } from '@/api/all'
 import { useUserStore } from '../../stores/userStore'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import { UserService } from '../../api/all';
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -57,7 +57,7 @@ const viewPass = () => {
 const onSubmit = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      const result = await updateUserInfo(toRaw(formData))
+      const result = await UserService.updateUserInfo(toRaw(formData))
       if (result.code === 0) {
         userStore.setToken(result.data.token)
         userStore.userInfo = result.data.userInfo

@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { login } from '../api/all'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -13,16 +12,9 @@ export const useUserStore = defineStore('user', {
       localStorage.setItem('token', token)
     },
     login(data) {
-      return new Promise(async (resole, reject) => {
-        let result = await login(data)
-        if (result.code === 0) {
-          this.token = result.data.token
-          this.userInfo = result.data.userInfo
-          resole(result.data.message)
-        } else {
-          reject(result.data.message)
-        }
-      })
+      const {token,userInfo} = data
+      this.setToken(token)
+      localStorage.setItem('userInfo', JSON.stringify(userInfo))
     }
   }
 })

@@ -18,17 +18,17 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => {
-    console.log('response', response)
-    const message = response.data.message
+    console.log('interceptors.response', response.statusText)
+    const statusText = response.statusText
     if (response.status === 200 || response.status === 201) {
       ElMessage({
         type: 'success',
-        message
+        message: statusText
       })
       return response.data
     } else {
-      ElMessage.error(message)
-      return Promise.reject(new Error(message))
+      ElMessage.error(statusText)
+      return Promise.reject(new Error(statusText))
     }
   },
   (error) => {
@@ -38,10 +38,3 @@ instance.interceptors.response.use(
 )
 
 export default instance
-
-// response data
-// {
-//   status: 'success | error',
-//   data: {},
-//   message?: ''
-// }
