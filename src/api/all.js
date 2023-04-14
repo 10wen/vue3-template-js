@@ -71,3 +71,11 @@ export const ComplaintsService = {}
 
 // comment
 export const CommentService = {}
+
+
+// file
+export const FileService = {
+  delete: async (data) => {
+    return await postEvent(api.deleteFile,data)
+  },
+}

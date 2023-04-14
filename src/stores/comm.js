@@ -10,7 +10,7 @@ export const useCommonStore = defineStore('common', () => {
   }
 
   // 全局消息弹出框
-  const openElMessageBox = (title,Msg,ConfirmCallback,CancelCallBack=()=>{}) => {
+  const openElMessageBox = (title, Msg, ConfirmCallback = () => {}, CancelCallBack = () => {}) => {
     ElMessageBox.confirm(Msg, title, {
       confirmButtonText: 'OK',
       cancelButtonText: 'Cancel',
