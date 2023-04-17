@@ -8,15 +8,17 @@
           :model="formData"
           label-width="100px"
           style="width: 350px"
-          class="login-form"
         >
-          <el-form-item label="role" prop="role">
-            <el-input type="text" v-model="formData.username"  disabled />
+          <el-form-item label="role" prop="adminType">
+            <el-input type="text" v-model="formData.adminType"  disabled />
           </el-form-item>
-          <el-form-item label="name" prop="username">
+          <el-form-item label="nickname" prop="nickname">
+            <el-input type="text" v-model="formData.nickname" clearable />
+          </el-form-item>
+          <el-form-item label="username" prop="username">
             <el-input type="text" v-model="formData.username" clearable />
           </el-form-item>
-          <el-form-item label="pass" prop="password">
+          <el-form-item label="password" prop="password">
             <el-input
               type="password"
               v-model="formData.password"
@@ -34,20 +36,15 @@
 </template>
 
 <script setup>
-import { reactive, ref, toRaw } from 'vue'
+import { onMounted, reactive, ref, toRaw } from 'vue'
 import { useUserStore } from '../../stores/userStore'
-import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { UserService } from '../../api/all';
+import { computed } from '@vue/reactivity';
 
 const userStore = useUserStore()
-const router = useRouter()
-const formData = reactive({
-  username: '',
-  password: ''
-})
+const formData = reactive(computed(() => (userStore.userInfo)))
 const formRef = ref(null)
-
 
 const isView = ref(false)
 const viewPass = () => {
@@ -59,9 +56,7 @@ const onSubmit = () => {
     if (valid) {
       const result = await UserService.updateUserInfo(toRaw(formData))
       if (result.code === 0) {
-        userStore.setToken(result.data.token)
         userStore.userInfo = result.data.userInfo
-        router.push('/')
       }
     } else {
       ElMessage({
@@ -74,6 +69,9 @@ const onSubmit = () => {
 
 
 const formRules = {
+  nickname: [
+    { min: 5, max: 10, message: 'Length should be 5 to 10', trigger: 'blur' }
+  ],
   username: [
     { required: true, message: 'Please input username', trigger: 'blur' },
     { min: 5, max: 10, message: 'Length should be 5 to 10', trigger: 'blur' },

@@ -8,21 +8,22 @@
       style="width: 60%"
     >
       <el-descriptions-item
-        label="Username"
+        label="Description"
         span="3"
         label-align="right"
         align="center"
         width="180px"
         label-class-name="my-label"
         class-name="my-content"
-        >kooriookami</el-descriptions-item
       >
+        Welcome to Neuser CMS
+      </el-descriptions-item>
       <el-descriptions-item label="Telephone" label-align="right" align="center" width="180px"
         >18100000000</el-descriptions-item
       >
-      <el-descriptions-item label="Place" :span="2" label-align="right" align="center" width="180px"
-        >Suzhou</el-descriptions-item
-      >
+      <el-descriptions-item label="Place" :span="2" label-align="right" align="center" width="180px">
+        Suzho
+      </el-descriptions-item>
       <el-descriptions-item label="Remarks" label-align="right" align="center" width="180px">
         <el-tag size="small">School</el-tag>
       </el-descriptions-item>

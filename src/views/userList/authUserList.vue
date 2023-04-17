@@ -19,28 +19,50 @@
       >
         <el-table-column type="expand">
           <template #default="props">
-            <div m="4">
-              <p m="t-0 b-2">State: {{ props.row.state }}</p>
-              <p m="t-0 b-2">City: {{ props.row.city }}</p>
-              <p m="t-0 b-2">Address: {{ props.row.address }}</p>
-              <p m="t-0 b-2">Zip: {{ props.row.zip }}</p>
-              <h3>Family</h3>
-              <el-table :data="props.row.family" :border="childBorder">
-                <el-table-column label="Name" prop="name" />
-                <el-table-column label="State" prop="state" />
-                <el-table-column label="City" prop="city" />
-                <el-table-column label="Address" prop="address" />
-                <el-table-column label="Zip" prop="zip" />
-              </el-table>
+            <div class="userInfo-box">
+              <div>
+                <el-image style="width: 100px; height: 100px" :src="props.row.avatarUrl" fit="cover" />
+              </div>
+              <div class="info">
+                <div class="flex-column" style="justify-content: space-between;">
+                  <span><el-text class="mx-1" type="info">userId : </el-text> {{ props.row.userId }}</span>
+                  <span><el-text class="mx-1" type="info">username : </el-text> {{ props.row.username }}</span>
+                  <span><el-text class="mx-1" type="info">nickname : </el-text> {{ props.row.nickname }}</span>
+                  <span><el-text class="mx-1" type="info">signature : </el-text> {{ props.row.signature }}</span>
+                </div>
+                <div class="flex-column" style="justify-content: space-between;">
+                  <span><el-text class="mx-1" type="info">resources : </el-text> {{ props.row.srcList.length || 0 }}</span>
+                  <span><el-text class="mx-1" type="info">followings : </el-text> {{ props.row.followings.length || 0 }}</span>
+                  <span><el-text class="mx-1" type="info">followers : </el-text> {{ props.row.followers.length || 0 }}</span>
+                  <span><el-text class="mx-1" type="info">joinedCircles : </el-text> {{ props.row.joinedCircles.length || 0 }}</span>
+                </div>
+                <div class="flex-column-reverse mr-10">
+                  <el-button type="normal" @click="handleEditUser">save</el-button>
+                </div>
+              </div>
             </div>
           </template>
         </el-table-column>
         <el-table-column type="selection" width="55" />
-        <el-table-column label="Date">
-          <template #default="scope">{{ scope.row.date }}</template>
+        <el-table-column label="userId">
+          <template #default="scope">{{ scope.row.userId }}</template>
         </el-table-column>
-        <el-table-column property="name" label="Name" />
-        <el-table-column property="address" label="Address" show-overflow-tooltip />
+        <el-table-column property="nickname" label="nickname" />
+        <el-table-column property="username" label="username" />
+        <el-table-column property="signature" label="signature" show-overflow-tooltip />
+        <el-table-column label="Action" width="200" align="center">
+          <template #default="scope">
+            <!-- <el-button size="small" @click="handleEdit(scope.$index, scope.row)" disabled
+              >Edit</el-button
+            > -->
+            <el-button
+              size="small"
+              type="danger"
+              @click="handleDeleteUser(scope.$index, scope.row)"
+              >Delete</el-button
+            >
+          </template>
+        </el-table-column>
       </el-table>
       <SmallPagination 
         :total="totalRow"
@@ -72,44 +94,57 @@ const toggleSelection = (rows) => {
 const handleSelectionChange = (val) => {
   multipleSelection.value = val
 }
+const handleDeleteUser = async () => {
+
+}
+const handleEditUser = async () => {
+
+}
 
 const tableData = [
   {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    userId: '2016-05-03',
+    nickname: 'Tom',
+    username: 'los Angeles',
+    signature: 'No. 189, Grove St, Los Angeles',
+    srcList: [],
+    followings: [],
+    followers: [],
+    joinedCircles: []
   },
   {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    userId: '2016-05-03',
+    nickname: 'Tom',
+    username: 'los Angeles',
+    signature: 'No. 189, Grove St, Los Angeles',
+    srcList: [],
+    followings: [],
+    followers: [],
+    joinedCircles: []
   },
   {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    userId: '2016-05-03',
+    nickname: 'Tom',
+    username: 'los Angeles',
+    signature: 'No. 189, Grove St, Los Angeles',
+    srcList: [],
+    followings: [],
+    followers: [],
+    joinedCircles: []
   },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-08',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-06',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-07',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  }
 ]
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.userInfo-box {
+  padding: 20px 30px;
+  display: flex;
+  .info {
+    flex: 1;
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+</style>

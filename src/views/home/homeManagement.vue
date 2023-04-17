@@ -19,7 +19,6 @@
         </div>
       </div>
       <el-upload
-        v-model:file-list="fileList"
         action="http://127.0.0.1:3012/file/upload"
         limit="5"
         list-type="picture-card"
@@ -31,37 +30,36 @@
       >
         <el-icon><Plus /></el-icon>
       </el-upload>
-
-      <!-- <el-dialog width="60%" v-model="dialogVisible">
-        <img :src="dialogImageUrl" alt="Preview Image" style="width: 100%" />
-      </el-dialog> -->
-      
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, toRaw } from 'vue'
+import { onMounted, ref, toRaw } from 'vue'
 import { Plus,CloseBold  } from '@element-plus/icons-vue'
-import { FileService } from '../../api/all'
+import { FileService, getEvent } from '../../api/all'
 
 const dialogImageUrl = ref('')
 const dialogVisible = ref(false)
+const srcList = ref([])
 
-const handleBeforeRomove = async (uploadFile, uploadFiles) => {
-  let filename = uploadFile.response.url.split('/').pop()
-  const result = await FileService.delete({ filename })
-  console.log('------', result)
+const initData = async () => {
+  const res = await getEvent('/carousel')
+  if (res.code === 0) {
+    srcList.value = res.data
+  }
 }
+onMounted(() => {
+  initData()
+})
+
 const handleRemove = async (img) => {
   let filename = img.split('/').pop()
   const result = await FileService.delete({ filename })
   if (result.code === 0) {
     srcList.value = srcList.value.filter(item => item !== img)
   }
-  console.log('------', result)
 }
-
 
 const handlePictureCardPreview = (uploadFile) => {
   dialogImageUrl.value = uploadFile.url
@@ -72,14 +70,7 @@ const uploadSuccess = (response) => {
   srcList.value.push(response.url)
 }
 
-const fileList = ref([
-  // {
-  //   name: 'asas.jpg',
-  //   url: 'https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aca8ba6eff764d53b70668878336e015~tplv-k3u1fbpfcp-watermark.image'
-  // }
-])
 
-const srcList = ref([])
 
 </script>
 
