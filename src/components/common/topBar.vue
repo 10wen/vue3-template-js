@@ -7,6 +7,7 @@
     </div>
     <div class="user-info">
       <screenFull />
+      <selectLang />
       <el-popover placement="bottom" :width="200" trigger="click" hide-after="0">
         <template #reference>
           <div style="display: flex; align-items: center">
@@ -16,7 +17,7 @@
           </div>
         </template>
         <template #default>
-          <el-button style="width: 100%" link type="primary" @click="logout">Logout</el-button>
+          <el-button style="width: 100%" link type="primary" @click="logout">{{ $t('message.logout') }}</el-button>
         </template>
       </el-popover>
     </div>
